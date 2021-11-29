@@ -1,1 +1,4 @@
 flask
+Flask-SQLalchemy
+mysqlclient
+pymysql
