@@ -5,11 +5,17 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:@localhost/flaskSample"
+#For using with Postgres
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:password@localhost/flasksample"
+
+#For using with mysql
+#app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:@localhost/flaskSample"
 db = SQLAlchemy(app)
 
 
-class User(db.Model):
+class Users(db.Model):
+    # you can even specify the table name with which you are working.
+    #__tablename__ = 'users'
     name = db.Column(db.String(100), primary_key = True, unique=False, nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(250), unique = False, nullable=False)

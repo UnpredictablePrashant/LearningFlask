@@ -2,3 +2,4 @@ flask
 Flask-SQLalchemy
 mysqlclient
 pymysql
+psycopg2-binary 

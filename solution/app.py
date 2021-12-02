@@ -3,6 +3,9 @@ from flask import Flask, app, request
 from flask.templating import render_template
 from models import *
 
+# If you programmatically wants to create the database then use create_all() function
+# db.create_all()
+# db.session.commit()
 
 #First Flask code to display Hello World
 @app.route('/test')
@@ -35,7 +38,7 @@ def registerSuccess():
         name = request.form.get('name')
         email = request.form.get('email')
         password = request.form.get('password')
-        entry = User(name=name,email=email,password=password)
+        entry = Users(name=name,email=email,password=password)
         db.session.add(entry)
         db.session.commit()
     #return render_template('success.html', form_data=data)
