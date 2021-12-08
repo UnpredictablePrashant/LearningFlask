@@ -1,0 +1,42 @@
+<html>
+
+<head>
+	<title>Chat Room</title>
+	<script src="https://cdn.socket.io/4.4.0/socket.io.min.js"
+		integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj"
+		crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+
+<body>
+	<script type="text/javascript">
+		$(document).ready(function () {			
+			var socket = io();
+			socket.on('connect', function () {
+				socket.send('User has connected!');
+			});
+
+			socket.on('message', function (msg) {
+				$("#messages").append('<p>' + msg + '</p>');
+				console.log('Received message');
+			});
+
+			$('#sendbutton').on('click', function () {
+				socket.send($('#myMessage').val());
+				$('#myMessage').val('');
+			});
+
+		});
+	</script>
+	<div>
+		<h1 style="text-align: center;">Anonymous Chat</h1>
+	</div>
+	<div style="text-align: center;">
+		<div id="messages"></div>
+		<input type="text" id="myMessage">
+		<button id="sendbutton">Send</button>
+	</div>
+
+</body>
+
+</html>
