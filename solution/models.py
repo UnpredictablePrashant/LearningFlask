@@ -23,7 +23,8 @@ class Users(db.Model):
 
 """
 Stop the program and run this in python
-from project import db, create_app, models
-db.create_all(app=create_app()) # pass the create_app result so Flask-SQLAlchemy gets the configuration
-
+from models import db
+from app import app
+app.app_context().push()
+db.create_all() # pass the create_app result so Flask-SQLAlchemy gets the configuration
 """

@@ -50,7 +50,7 @@ def loginSucess():
         email = request.form.get('email')
         password = request.form.get('password')
         #result = db.session.query(User).all()
-        result = db.session.query(User).filter(User.email==email, User.password==password)
+        result = db.session.query(Users).filter(Users.email==email, Users.password==password)
         for row in result:
             if (len(row.email)!=0):
                 print("Welcome ",row.name)
