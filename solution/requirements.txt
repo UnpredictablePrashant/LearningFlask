@@ -3,3 +3,6 @@ Flask-SQLalchemy
 mysqlclient
 pymysql
 psycopg2-binary 
+pytest
+flask-pytest
+selenium
